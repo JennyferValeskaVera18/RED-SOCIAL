@@ -1,0 +1,21 @@
+body {
+    background: #202020;
+    color: white;
+}
+
+#titulo-principal {
+  font-family: 'Caramel Sweets', sans-serif;
+  font-size: 50px;
+  
+}
+
+#task-main-container {
+  font-family: 'Typewriter_Condensed_Demi', sans-serif;
+}
+
+main {
+    height: calc(100vh - 56px); /* 56px es la altura predeterminada de la barra de navegación en Bootstrap */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
