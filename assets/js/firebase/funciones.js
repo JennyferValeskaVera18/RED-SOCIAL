@@ -22,7 +22,7 @@ export default function setUpTasks(user)  {
         // Iteración sobre cada documento en el QuerySnapshot. 
         querySnapshot.forEach(doc => {
             const data = doc.data();
-            const isOwner = data.userEmail === userGlobAL.email; // Verificar si el usuario actual es el propietario de la tarea
+            const isOwner = data.userName === userGlobAL.displayName || data.userEmail === userGlobAL.email; // Verificar si el usuario actual es el propietario de la tarea
             
             // Construcción del HTML para mostrar la tarea en el contenedor de tareas.
             // Construcción del HTML para mostrar la tarea en el contenedor de tareas.

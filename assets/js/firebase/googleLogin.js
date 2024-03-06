@@ -8,6 +8,8 @@ googleButton.addEventListener("click", async () => {
     const provider = new GoogleAuthProvider()
 
     try {
+        const credentials = await signInWithPopup(auth, provider)
+
         showMessage("Bienvenido/a " + "@" + credentials.user.displayName)
     } catch (error) {
         console.log(error)
