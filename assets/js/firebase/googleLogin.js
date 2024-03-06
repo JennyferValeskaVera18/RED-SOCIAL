@@ -8,12 +8,6 @@ googleButton.addEventListener("click", async () => {
     const provider = new GoogleAuthProvider()
 
     try {
-        const credentials = await signInWithPopup(auth, provider)
-
-        // Ocultar el formulario de registro después del registro exitoso
-        const formContainer = googleButton.closest(".container");
-        formContainer.style.display = "none";
-
         showMessage("Bienvenido/a " + "@" + credentials.user.displayName)
     } catch (error) {
         console.log(error)

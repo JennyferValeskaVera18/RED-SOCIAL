@@ -16,10 +16,6 @@ signupForm.addEventListener("submit", async (e) => {
     try {
         const userDatos = await createUserWithEmailAndPassword(auth, email, password);
         console.log(userDatos);
-        
-        // Ocultar el formulario de registro después del registro exitoso
-        const formContainer = signupForm.closest(".container");
-        formContainer.style.display = "none";
 
         showMessage("Bienvenido/a " + "@" + userDatos.user.email)
     } catch (error) {
