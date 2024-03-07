@@ -10,32 +10,44 @@ let id = "";
 let editStatus = false;
 let userGlobAL; // Variable global para almacenar el usuario actualmente autenticado.
 
-// Función principal del módulo. Toma un argumento "user", que representa al usuario actualmente autenticado.
-// Suscripción a cambios en la colección de tareas en la base de datos.
-export default function setUpTasks(user)  {
+function getUserProfilePhotoUrl(user) {
+    if (user.providerData && user.providerData.length > 0) {
+        const provider = user.providerData[0].providerId;
+        if (provider === "google.com" && user.photoURL) {
+            return user.photoURL; // URL de la foto de perfil de Google si está disponible
+        }
+    }
+    // Si no es una cuenta de Google o no hay foto de perfil, utilizar la foto predeterminada
+    return "https://i.pinimg.com/564x/0d/42/90/0d42905fc5e9d14fa032d8ea0282bf68.jpg";
+}
+
+
+export default function setUpTasks(user) {
     userGlobAL = user;
-    // para suscribirse a cambios en la colección de tareas en la base de datos.
+
     onGetTask((querySnapshot) => {
         let html = '';
 
-        // READ
-        // Iteración sobre cada documento en el QuerySnapshot. 
         querySnapshot.forEach(doc => {
             const data = doc.data();
-            const isOwner = data.userName === userGlobAL.displayName || data.userEmail === userGlobAL.email; // Verificar si el usuario actual es el propietario de la tarea
-            
-            // Construcción del HTML para mostrar la tarea en el contenedor de tareas.
-            // Construcción del HTML para mostrar la tarea en el contenedor de tareas.
+            const isOwner = data.userName === userGlobAL.displayName || data.userEmail === userGlobAL.email;
+        
+            // Obtener la URL de la foto de perfil del autor de la publicación
+            const userProfilePhotoUrl = getUserProfilePhotoUrl(user); // Aquí deberías pasar los datos del autor de la publicación
+        
+            // Construir el HTML para mostrar la tarea en el contenedor de tareas.
             html += `
-            <div class="card mb-3" data-id="${doc.id}"> <!-- Contenedor adicional con el ID de la tarea -->
+            <div class="card mb-3" data-id="${doc.id}">
                 <div class="card-body">
-                    <h6 class ="text-right fs-3 text"> ${data.userName}<h6/>
-                    <p class="opacity-75 fs-6 p-secondary"> ${data.date} ${data.time}<p/>
+                    <div class="user-info">
+                        <img src="${userProfilePhotoUrl}" class="profile-photo" alt="Foto de Perfil">
+                        <h6 class="user-name">${data.userName}</h6>
+                    </div>
+                    <p class="opacity-75 fs-6 p-secondary">${data.date} ${data.time}</p>
                     <h4 class="card-title">${data.title}</h4>
                     <div class="border border-transparent shadow p-3 mb-5 bg-body rounded">
-                    <p class="card-text m-1">${data.description}</p>
+                        <p class="card-text m-1">${data.description}</p>
                     </div>
-
                     <div class="row">
                         ${isOwner ? `
                             <button class='btn btn-danger btn-delete-custom mx-auto col-5' data-id='${doc.id}'>🗑 Eliminar</button>
@@ -45,7 +57,6 @@ export default function setUpTasks(user)  {
                 </div>
             </div>
             `;
-
         });
 
         tasksContainer.innerHTML = html; //se establece el contenido HTML del contenedor de tareas (tasksContainer) con el HTML generado.
@@ -146,3 +157,5 @@ function getFormattedTime(date) {
 
     return `${hours}:${minutes}`;
 }
+
+

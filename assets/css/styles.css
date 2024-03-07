@@ -18,3 +18,10 @@ main {
     align-items: center;
     justify-content: center;
   }
+
+
+.profile-photo {
+  width: 40px; /* Ajusta el tamaño según tus necesidades */
+  height: 40px; /* Ajusta el tamaño según tus necesidades */
+  border-radius: 50%; /* Esto hace que la foto de perfil sea circular */
+}
