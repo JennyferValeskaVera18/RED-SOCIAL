@@ -14,7 +14,6 @@ body {
 }
 
 main {
-    height: calc(100vh - 56px); /* 56px es la altura predeterminada de la barra de navegación en Bootstrap */
     display: flex;
     align-items: center;
     justify-content: center;

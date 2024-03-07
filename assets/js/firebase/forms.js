@@ -11,7 +11,7 @@ document.getElementById("login-tab").addEventListener("click", function() {
 document.getElementById("logout").addEventListener("click", function() {
   // Mostrar la pestaña de registro y la pestaña de inicio de sesión
   document.getElementById("register").classList.add("show", "active");
-  document.getElementById("login").classList.add("show", "active");
+  document.getElementById("login").classList.remove("show", "active");
 
   // Asegurarse de que ambas pestañas estén visibles
   document.getElementById("register").classList.remove("fade");

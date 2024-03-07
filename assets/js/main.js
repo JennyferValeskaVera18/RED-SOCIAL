@@ -4,7 +4,7 @@ import { loginCheck } from "./firebase/loginCheck.js"
 
 import "./firebase/signup-form.js"
 import "./firebase/logout.js"
-// import "./firebase/forms.js"
+import "./firebase/forms.js"
 import "./firebase/googleLogin.js"
 import "./firebase/signin-form.js"
 
