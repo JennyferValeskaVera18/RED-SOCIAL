@@ -1,10 +1,9 @@
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { auth } from "./firebase/firebase.js";
 import { loginCheck } from "./firebase/login_check.js";
-import './firebase/signup_form.js';
-import './firebase/signin_form.js';
+import './firebase/signup-form.js';
+import './firebase/signin-form.js';
 import './firebase/google_login.js';
-import './firebase/logout.js';
 
 onAuthStateChanged(auth, async (user) => {
     // Si ha ingresado
@@ -18,4 +17,14 @@ onAuthStateChanged(auth, async (user) => {
     else {
         loginCheck(user);
     }
+
+    // Verificar si estamos en la página de segundo.html
+    if (window.location.href.includes('segundo.html')) {
+        initLogout();
+    }
+});
+
+// Escucha el evento de logout y maneja la redirección
+document.addEventListener('userLogout', () => {
+    window.location.href = 'index.html'; 
 });

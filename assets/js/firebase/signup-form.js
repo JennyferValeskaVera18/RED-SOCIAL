@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { auth } from "./firebase.js";
-import { showMessage } from "./show_message.js";
+import { showMessage } from "./show-message.js";
 
 const signupForm = document.getElementById('signup-form');
 
@@ -18,6 +18,9 @@ signupForm.addEventListener('submit', async (e) => {
         const modal = bootstrap.Modal.getInstance(signupModal);
         signupForm.reset();
         modal.hide();
+
+        // Redirigir al usuario a segundo.html
+        window.location.href = 'segundo.html';
     } catch (error) {
         if (error.code === 'auth/email-already-in-use') {
             showMessage('Email already in use', 'red');
