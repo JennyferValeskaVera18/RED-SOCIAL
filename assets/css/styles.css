@@ -1,3 +1,6 @@
+@import url('https://fonts.cdnfonts.com/css/caramel-sweets');
+@import url('https://fonts.cdnfonts.com/css/typewriter-condensed');
+
 body {
     background: #202020;
     color: white;
@@ -12,9 +15,3 @@ body {
 #task-main-container {
   font-family: 'Typewriter_Condensed_Demi', sans-serif;
 }
-
-main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }

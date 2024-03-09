@@ -1,35 +1,38 @@
-import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { auth } from "./firebase.js";
-import { showMessage } from "./show-message.js";
+import { showMessage } from "./show_message.js";
 
-document.addEventListener("DOMContentLoaded", function() {
-    const signinForm = document.querySelector("#signin-form");
+// Traemos el form necesario
+const signinForm = document.getElementById("signin-form");
 
-    if (signinForm) {
-        signinForm.addEventListener("submit", async (e) => {
-            e.preventDefault();
+signinForm.addEventListener('submit', async (e) => {
+    // Para prevenir que la página se recargue
+    e.preventDefault();
 
-            const email = signinForm["login-email"].value;
-            const password = signinForm["login-password"].value;
+    // Accedemos a los elementos con notación de corchete
+    const email = signinForm['email-signin'].value;
+    const password = signinForm['password-signin'].value;
 
-            try {
-                const credentials = await signInWithEmailAndPassword(auth, email, password);
-                console.log(credentials);
+    try {
+        const credentials = await signInWithEmailAndPassword(auth, email, password);
+        console.log(credentials);
 
-                showMessage("Bienvenido/a " + "@" + credentials.user.email);
-                window.location.href = "../home.html";  // Ajusta la ruta según la estructura de tu proyecto
-            } catch (error) {
-                console.log(error);
+        // Almacenar el estado de autenticación en el almacenamiento local
+        localStorage.setItem('user_authenticated', 'true');
 
-                console.log(error);
-                if (error.code === "auth/wrong-password") {
-                    showMessage("Wrong password", "red");
-                } else if (error.code === "auth/user-not-found") {
-                    showMessage("User not found", "red");
-                } else {
-                    showMessage("Something went wrong", "red");
-                }
-            }
-        });
+        // Redirigir al usuario a segundo.html
+        window.location.href = 'segundo.html';
+    }
+    catch (error) {
+        console.log(error);
+        if(error.code === "auth/wrong-password") {
+            showMessage("Wrong password", "red"); // Coloco los argumentos de las variables de la función
+        }
+        else if (error.code === "auth/user-not-found") {
+            showMessage("User not found", "red");
+        }
+        else {
+            showMessage("Something went wrong", "red");
+        }
     }
 });
