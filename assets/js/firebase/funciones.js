@@ -1,26 +1,14 @@
 // Importación de funciones relacionadas con la base de datos desde el módulo "firebase.js"
 import { createTask, onGetTask, updateTask, deleteTask, getTask } from "./firebase.js";
 
-//Selección de elementos del DOM, como el formulario para crear tareas y el contenedor para mostrar las tareas.
-const taskForm = document.getElementById("create-form"); //Id del form para agregar tareas
-const tasksContainer = document.getElementById("tasks-container"); //Id del div que tendrá los tasks
+// Selección de elementos del DOM, como el formulario para crear tareas y el contenedor para mostrar las tareas.
+const taskForm = document.getElementById("create-form"); // Id del form para agregar tareas
+const tasksContainer = document.getElementById("tasks-container"); // Id del div que tendrá los tasks
 
-//Variables globales: Se definen variables globales para almacenar el ID de la tarea y el estado de edición.
+// Variables globales: Se definen variables globales para almacenar el ID de la tarea y el estado de edición.
 let id = "";
 let editStatus = false;
 let userGlobAL; // Variable global para almacenar el usuario actualmente autenticado.
-
-function getUserProfilePhotoUrl(user) {
-    if (user.providerData && user.providerData.length > 0) {
-        const provider = user.providerData[0].providerId;
-        if (provider === "google.com" && user.photoURL) {
-            return user.photoURL; // URL de la foto de perfil de Google si está disponible
-        }
-    }
-    // Si no es una cuenta de Google o no hay foto de perfil, utilizar la foto predeterminada
-    return "https://i.pinimg.com/564x/0d/42/90/0d42905fc5e9d14fa032d8ea0282bf68.jpg";
-}
-
 
 export default function setUpTasks(user) {
     userGlobAL = user;
@@ -29,18 +17,20 @@ export default function setUpTasks(user) {
         let html = '';
 
         querySnapshot.forEach(doc => {
+            console.log("Document ID:", doc.id);
             const data = doc.data();
+            console.log("Document Data:", data);
+            
             const isOwner = data.userName === userGlobAL.displayName || data.userEmail === userGlobAL.email;
-        
-            // Obtener la URL de la foto de perfil del autor de la publicación
-            const userProfilePhotoUrl = getUserProfilePhotoUrl(user); // Aquí deberías pasar los datos del autor de la publicación
-        
+
+            const pfp = data.photoURL ? data.photoURL : "https://i.pinimg.com/564x/0d/42/90/0d42905fc5e9d14fa032d8ea0282bf68.jpg";
+
             // Construir el HTML para mostrar la tarea en el contenedor de tareas.
             html += `
             <div class="card mb-3" data-id="${doc.id}">
                 <div class="card-body">
                     <div class="user-info">
-                        <img src="${userProfilePhotoUrl}" class="profile-photo" alt="Foto de Perfil">
+                        <img src="${pfp}" class="profile-photo" alt="Foto de Perfil">
                         <h6 class="user-name">${data.userName}</h6>
                     </div>
                     <p class="opacity-75 fs-6 p-secondary">${data.date} ${data.time}</p>
@@ -57,6 +47,28 @@ export default function setUpTasks(user) {
                 </div>
             </div>
             `;
+
+            // Agregar la foto y el nombre del usuario al contenedor user-info-container
+            const userInfoContainer = document.getElementById("user-info-container");
+
+            // Crear la imagen de perfil
+            const userImage = document.createElement("img");
+            userImage.src = pfp;
+            userImage.alt = "Profile";
+            userImage.classList.add("profile-photo");
+
+            // Crear el elemento para el nombre de usuario
+            const userNameElement = document.createElement("h6");
+            userNameElement.textContent = data.userName;
+            userNameElement.classList.add("user-name");
+            userNameElement.classList.add("text-white"); // Agregar la clase de Bootstrap para el texto blanco
+
+            // Limpiar el contenido anterior antes de agregar nuevos elementos
+            userInfoContainer.innerHTML = '';
+
+            // Agregar la imagen de perfil y el nombre de usuario al contenedor
+            userInfoContainer.appendChild(userImage);
+            userInfoContainer.appendChild(userNameElement);
         });
 
         tasksContainer.innerHTML = html; //se establece el contenido HTML del contenedor de tareas (tasksContainer) con el HTML generado.
@@ -105,9 +117,10 @@ export default function setUpTasks(user) {
         });
 
 
-
     });
 };
+
+
 
 // CREATE
 taskForm.addEventListener("submit", (e) => {
@@ -128,12 +141,14 @@ taskForm.addEventListener("submit", (e) => {
     
     // Si no se está editando, se crea una nueva tarea; de lo contrario, se actualiza la tarea existente.
     if (!editStatus) {
-        createTask(title, description, userName, date, time);
+        createTask(title, description, userName, userGlobAL.photoURL, date, time);
     }
     else {
         updateTask( id, ({
             title : title,
-            description : description
+            description : description,
+            photoURL : photoURL,
+            userName: userName
         }));
         editStatus = false; // Cambio del estado de edición a falso.
         taskForm["btn-task-save"].innerHTML = "Create"; // Cambio del texto del botón de envío del formulario a "Create".
@@ -157,5 +172,3 @@ function getFormattedTime(date) {
 
     return `${hours}:${minutes}`;
 }
-
-

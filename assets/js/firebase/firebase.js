@@ -35,7 +35,7 @@ appId: "1:485975935410:web:3b7a7f3c0948b5951a3cab"
  
 // Funciones del CRUD
 //Para añadir un documento a la colección "tasks".
-export const createTask = (title, description, userName, date, time) => addDoc(collection(db, "tasks"), {title, description, userName, date, time});
+export const createTask = (title, description, userName, photoURL, date, time) => addDoc(collection(db, "tasks"), {title, description, userName, photoURL, date, time});
 
 export const getTask = id => getDoc(doc(db, "tasks", id));
 

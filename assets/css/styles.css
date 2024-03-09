@@ -25,3 +25,19 @@ main {
   height: 40px; /* Ajusta el tamaño según tus necesidades */
   border-radius: 50%; /* Esto hace que la foto de perfil sea circular */
 }
+
+
+/* Estilos personalizados para el campo de entrada de archivos */
+#image-input {
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #f8f9fa; /* Color de fondo */
+  padding: 0.375rem 0.75rem;
+  height: calc(1.5em + 0.75rem + 2px);
+}
+
+/* Estilos adicionales si es necesario */
+#image-input:focus {
+  outline: none;
+  box-shadow: none;
+}
