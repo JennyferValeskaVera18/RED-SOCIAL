@@ -1,34 +1,18 @@
-// login_check.js
-export function loginCheck(user) {
-    const loggedOutElements = document.querySelectorAll('.logged-out');
-    const loggedInElements = document.querySelectorAll('.logged-in');
+import { showMessage } from "./show_message.js";
 
-    // Verificar si el usuario está autenticado
+const loggedOutLinks = document.querySelectorAll('.logged-out');
+const loggedInLinks = document.querySelectorAll('.logged-in');
+const mainTaskContainer = document.getElementById("task-main-container");
+
+export const loginCheck = user => {
+    // Si el usuario existe, redirigir ya se maneja en main.js
     if (user) {
-        // Mostrar elementos de "logged-in" y ocultar elementos de "logged-out"
-        loggedInElements.forEach(element => {
-            if (element.style) {
-                element.style.display = 'block';
-            }
-        });
-
-        loggedOutElements.forEach(element => {
-            if (element.style) {
-                element.style.display = 'none';
-            }
-        });
-    } else {
-        // Mostrar elementos de "logged-out" y ocultar elementos de "logged-in"
-        loggedOutElements.forEach(element => {
-            if (element.style) {
-                element.style.display = 'block';
-            }
-        });
-
-        loggedInElements.forEach(element => {
-            if (element.style) {
-                element.style.display = 'none';
-            }
-        });
+        return;
     }
-}
+
+    // Si no hay usuario, manejar visibilidad y mensajes
+    loggedInLinks.forEach(link => link.style.display = 'none');
+    loggedOutLinks.forEach(link => link.style.display = 'block');
+    mainTaskContainer.style.display = "none";
+    showMessage('Logged out', 'orange');
+};
