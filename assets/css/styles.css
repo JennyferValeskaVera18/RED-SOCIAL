@@ -21,18 +21,18 @@ input {
 }
 
 .navbar {
-  background-color: rgba(149, 149, 149, 0.403); /* Fondo semi-transparente para que se vea el efecto de desenfoque */
+  background-color: rgba(149, 149, 149, 0.403);
   padding: 10px;
   position: fixed !important;
   width: 100%;
   top: 0;
   transition: background-color 0.5s ease;
   z-index: 100;
-  backdrop-filter: blur(50px); /* Aplica un desenfoque de 10px al contenido detrás de la barra de navegación */
+  backdrop-filter: blur(50px); /* desenfoque */
 }
 
-#nav-1{
-  margin-left: 500px;
+.section{
+  margin-top: 90px;
 }
 
 .main-container {

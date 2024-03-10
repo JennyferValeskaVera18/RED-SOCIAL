@@ -1,0 +1,48 @@
+.btn-publicar {
+    position: relative;
+    width: 700px;
+    height: 60px;
+    background: #414141;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8d8d8d;
+    text-decoration: none;
+    letter-spacing: 2px;
+    border: 0.5px solid #cb1573;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 2%;
+    margin-top: 8%;
+  }
+  
+  .btn-publicar:hover{
+    color: #fff;
+  }
+  
+  .btn-publicar span {
+    position: absolute;
+    background: linear-gradient(to right, #ff8a00, #e52e71);  border-radius: 16px;
+    left: 0px;
+    width: 60px;
+    height: 60px;
+    transition: left 0.5s, width 0.5s; /* Agregada transición a las propiedades left y width */
+  }
+  
+  i {
+    font-size: 40px;
+    z-index: 1; 
+    transition: color 0.5s; /* Agregada transición al color del texto */
+  }
+  
+  .text-container {
+    z-index: 1; /* Aplica el z-index solo al texto */
+    width: 100%; /* Asegura que el contenedor de texto ocupe todo el ancho */
+  }
+  
+  .btn-publicar:hover span {
+    left: 0; /* Mueve el span al lado izquierdo durante el hover */
+    width: 100%; /* Ancho completo durante el hover */
+  }
+  

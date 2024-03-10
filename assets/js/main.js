@@ -18,7 +18,6 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
-
 // Animación de ingresar
 const sign_in_btn = document.querySelector("#signin-btn");
 const sign_up_btn = document.querySelector("#signup-btn");

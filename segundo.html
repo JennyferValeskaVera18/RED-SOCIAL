@@ -6,7 +6,8 @@
   <title>Proyecto Firebase</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-  <link rel="stylesheet" href="assets/css/.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/segundo.css">
 </head>
 <body>
   <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
@@ -25,41 +26,64 @@
     </div>
   </nav>
   <h1 class="container p-4" id="titulo-principal">Autenticación con Firebase</h1>
-  <main id="task-main-container">
-    <div class="container p-4 text-dark">
-      <div class="row" id="task-form-container">
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-body"  id="create-tasks">
-              <h1 class="h4">Agregar tarea</h1>
-              <form id="create-form">
-                <label for="task-title">Titulo:</label>
-                <input
-                  type="text"
-                  id="task-title"
-                  class="form-control mb-3"
-                  class="My First Title"
-                  placeholder="Titulo de tarea"
-                  autofocus
-                />
-                <label for="task-content">Contenido:</label>
-                <textarea
-                  id="task-content"
-                  rows="3"
-                  class="form-control mb-3"
-                  placeholder="contenido de tarea"
-                ></textarea>
-
-                <button class="btn btn-primary" id="btn-task-save">Guardar</button>
-              </form>
-            </div>
-          </div>
+  <button class="btn-publicar p-2 mx-auto" data-bs-toggle="modal" data-bs-target="#infoModal">
+    <i class="bi bi-plus-square text-dark"></i>
+    <div class="text-container">Crear publicación</div><span></span>
+  </button>
+  <!-- Modal para mostrar la información -->
+  <div class="modal fade m-2" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="infoModalLabel">Información Adicional</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <!-- Acá se mostrarán las tasks de la base de datos -->
-        <div class="col-md-6" id="tasks-container"></div>
+        <div class="modal-body">
+          <main id="task-main-container">
+            <div class="container p-4 text-dark">
+              <div class="row" id="task-form-container">
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-body"  id="create-tasks">
+                      <h1 class="h4">Agregar tarea</h1>
+                      <form id="create-form">
+                        <label for="task-title">Titulo:</label>
+                        <input
+                          type="text"
+                          id="task-title"
+                          class="form-control mb-3"
+                          class="My First Title"
+                          placeholder="Titulo de tarea"
+                          autofocus
+                        />
+                        <label for="task-content">Contenido:</label>
+                        <textarea
+                          id="task-content"
+                          rows="3"
+                          class="form-control mb-3"
+                          placeholder="contenido de tarea"
+                        ></textarea>
+        
+                        <button class="btn btn-primary" id="btn-task-save">Guardar</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
       </div>
     </div>
-  </main>
+  </div>
+  <!-- Acá se mostrarán las tasks de la base de datos -->
+  <div class="col-md-6" id="tasks-container"></div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script type="module" src="assets/js/segundo.js"></script>
