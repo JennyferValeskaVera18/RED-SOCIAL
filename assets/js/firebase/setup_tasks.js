@@ -19,7 +19,7 @@ export function setUpTasks(user) {
             
 
             html += `
-                <div class="card mb-3">
+                <div class="card mb-3 rounded-4">
                     <div class="card-body">
                         <h6 class ="text-right fs-3 text"> ${data.userName}<h6/>
                         <p class="opacity-75 fs-6 p-secondary"> ${data.date} ${data.time}<p/>
