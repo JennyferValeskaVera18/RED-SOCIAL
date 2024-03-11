@@ -21,9 +21,15 @@ export default function setUpTasks(user) {
             const data = doc.data();
             console.log("Document Data:", data);
             
-            const isOwner = data.userName === userGlobAL.displayName || data.userEmail === userGlobAL.email;
+            
+            const isOwner = data.userEmail === userGlobAL.email;
 
-            const pfp = data.photoURL ? data.photoURL : "https://i.pinimg.com/564x/0d/42/90/0d42905fc5e9d14fa032d8ea0282bf68.jpg";
+
+            
+            const defaultProfilePhotoURL = "https://i.pinimg.com/564x/0d/42/90/0d42905fc5e9d14fa032d8ea0282bf68.jpg";
+            const pfp = data.photoURL ? data.photoURL : defaultProfilePhotoURL ;
+
+            const userName = data.userName ? data.userName : "Usuario Anónimo";
 
             // Construir el HTML para mostrar la tarea en el contenedor de tareas.
             html += `
@@ -31,7 +37,7 @@ export default function setUpTasks(user) {
                 <div class="card-body">
                     <div class="user-info">
                         <img src="${pfp}" class="profile-photo" alt="Foto de Perfil">
-                        <h6 class="user-name">${data.userName}</h6>
+                        <h6 class="user-name">${userName}</h6>
                     </div>
                     <p class="opacity-75 fs-6 p-secondary">${data.date} ${data.time}</p>
                     <h4 class="card-title">${data.title}</h4>
@@ -48,27 +54,7 @@ export default function setUpTasks(user) {
             </div>
             `;
 
-            // Agregar la foto y el nombre del usuario al contenedor user-info-container
-            const userInfoContainer = document.getElementById("user-info-container");
-
-            // Crear la imagen de perfil
-            const userImage = document.createElement("img");
-            userImage.src = pfp;
-            userImage.alt = "Profile";
-            userImage.classList.add("profile-photo");
-
-            // Crear el elemento para el nombre de usuario
-            const userNameElement = document.createElement("h6");
-            userNameElement.textContent = data.userName;
-            userNameElement.classList.add("user-name");
-            userNameElement.classList.add("text-white"); // Agregar la clase de Bootstrap para el texto blanco
-
-            // Limpiar el contenido anterior antes de agregar nuevos elementos
-            userInfoContainer.innerHTML = '';
-
-            // Agregar la imagen de perfil y el nombre de usuario al contenedor
-            userInfoContainer.appendChild(userImage);
-            userInfoContainer.appendChild(userNameElement);
+        
         });
 
         tasksContainer.innerHTML = html; //se establece el contenido HTML del contenedor de tareas (tasksContainer) con el HTML generado.
@@ -122,6 +108,7 @@ export default function setUpTasks(user) {
 
 
 
+
 // CREATE
 taskForm.addEventListener("submit", (e) => {
     // Evitamos que recargue la pagina
@@ -134,6 +121,7 @@ taskForm.addEventListener("submit", (e) => {
     
     // Obtención del nombre de usuario del usuario actualmente autenticado.
     const userName = userGlobAL.displayName;
+    const userEmail = userGlobAL.email;
 
     // Obtención del título y la descripción de la tarea del formulario.
     const title = taskForm["task-title"].value;
@@ -141,7 +129,7 @@ taskForm.addEventListener("submit", (e) => {
     
     // Si no se está editando, se crea una nueva tarea; de lo contrario, se actualiza la tarea existente.
     if (!editStatus) {
-        createTask(title, description, userName, userGlobAL.photoURL, date, time);
+        createTask(title, description, userName, userGlobAL.photoURL, userEmail, date, time);
     }
     else {
         updateTask( id, ({

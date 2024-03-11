@@ -22,15 +22,15 @@ signInForm.addEventListener("submit", async e => {
     } catch (error) {
         onsole.log(error);
         if(error.code === "auth/wrong-password") {
-            showMessage("Wrong password", "red") //coloco los argumentos de las variables de la función
+            showMessage("Contraseña incorrecta", "red") //coloco los argumentos de las variables de la función
         }
         else if (error.code === "auth/user-not-found") {
             //alert("Weak password");
-            showMessage("User not found", "red")
+            showMessage("Usuario no encontrado", "red")
         }
         else {
             //alert("Something went wrong :( ");
-            showMessage("Something went wrong", "red")
+            showMessage("Algo está fallando", "red")
         }
     }
 
