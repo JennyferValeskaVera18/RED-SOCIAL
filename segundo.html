@@ -10,28 +10,59 @@
   <link rel="stylesheet" href="assets/css/segundo.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-dark navbar-expand-lg z-3">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">FireApp</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" id="" href="#">Logout</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="" href="#">games</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="logout" href="#">Logout</a>
-          </li>
-        </ul>
-      </div>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar mt-4 rounded-4 ms-4 p-2">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column text-center">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">
+                <span class="inicio">Inicio</span>
+                <i class="fas fa-home"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="logout" href="#">
+                <span class="logout">Logout</span>
+                <i class="fas fa-cogs"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="perfil">Perfil</span>
+                <i class="fas fa-user"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>      
     </div>
-  </nav>
+  </div>
+  
+  <!-- Barra de Menú Inferior -->
+  <div class="footer-menu">
+    <nav class="navbar navbar-expand-sm navbar-light">
+      <ul class="nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">
+            <i class="fas fa-home"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-cogs"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-user"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
   <div class="container">
     <div class="row justify-content-center mt-4">
       <div class="col-lg-7">
