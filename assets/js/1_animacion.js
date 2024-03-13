@@ -17,3 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
+
+  //Animación imagen:
+  window.onload = function() {
+    document.querySelector('.main-image').classList.add('active');
+  };

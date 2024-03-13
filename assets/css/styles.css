@@ -1,12 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/caramel-sweets');
-@import url('https://fonts.cdnfonts.com/css/typewriter-condensed');
-#titulo-principal {
-  font-family: 'Caramel Sweets', sans-serif;
-  font-size: 50px;
-}
-#task-main-container {
-  font-family: 'Typewriter_Condensed_Demi', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+
 @keyframes animate {
   0%, 100% {
     clip-path: polygon(0% 45%, 15% 44%, 32% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
@@ -24,8 +18,12 @@ html, body {
 
 body,
 input {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Pixelify Sans', Arial, sans-serif;
   height: 100%;
+}
+
+input{
+  height: 8%;
 }
 
 .navbar {
@@ -132,14 +130,21 @@ input {
   z-index: 0;
 }
 
-.main-image{
-  width: 100px;
+.main-image {
+  opacity: 0;
+  transform: translateY(30px); /* Puedes ajustar la distancia de desplazamiento según tus preferencias */
+  transition: opacity 2s ease-in-out, transform 2s ease-in-out; /* Puedes ajustar la duración y la función de temporización según tus preferencias */
+}
+
+.main-image.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .main-container {
   position: relative;
   width: 100%;
-  background-color: #fff;
+  background-color: #ffffff00;
   min-height: 100vh;
   overflow: hidden;
 }
@@ -157,14 +162,30 @@ input {
 
 .signin-signup {
   position: absolute;
-  top: 50%;
+  background-color: #ffffff2d;
+  backdrop-filter: blur(5px); /* desenfoque */
+  box-shadow: 0 0 20px rgba(182, 13, 72, 0.308);
+  border-radius: 30px;
+  top: 55%;
   transform: translate(-50%, -50%);
   left: 75%;
-  width: 50%;
+  width: 40%;
+  height: 75%;
   transition: 1s 0.7s ease-in-out;
   display: grid;
   grid-template-columns: 1fr;
   z-index: 5;
+}
+
+h4{
+  font-size: 50px;           /* Tamaño del texto (ajústalo según tus preferencias) */
+  color: rgb(255, 255, 255);             /* Color del texto (amarillo en este caso) */
+  text-shadow: 
+    -3px -3px 0 rgb(125, 74, 198),        /* Sombra superior izquierda (color azul) */
+     3px -3px 0 rgb(125, 74, 198),        /* Sombra superior derecha (color azul) */
+    -3px  3px 0 rgb(125, 74, 198),        /* Sombra inferior izquierda (color azul) */
+     3px  3px 0 rgb(125, 74, 198);        /* Sombra inferior derecha (color azul) */
+     margin-bottom: 1px;
 }
 
 form {
@@ -195,64 +216,6 @@ form.signin-form {
   
 }
 
-.signup-form .input-field {
-    max-width: 380px;
-    width: 100%;
-    background-color: #f0f0f0;
-    margin: 7px 0;
-    height: 45px;
-    border-radius: 55px;
-    display: grid;
-    grid-template-columns: 15% 85%;
-    padding: 0 0.4rem;
-    position: relative;
-  }
-
-
-  .signup-form  .input-field i {
-    text-align: center;
-    line-height: 45px;
-    color: #acacac;
-    transition: 0.5s;
-    font-size: 1.1rem;
-  }
-
-
-.input-field {
-  max-width: 380px;
-  width: 100%;
-  background-color: #f0f0f0;
-  margin: 10px 0;
-  height: 55px;
-  border-radius: 55px;
-  display: grid;
-  grid-template-columns: 15% 85%;
-  padding: 0 0.4rem;
-  position: relative;
-}
-
-.input-field i {
-  text-align: center;
-  line-height: 55px;
-  color: #acacac;
-  transition: 0.5s;
-  font-size: 1.1rem;
-}
-
-.input-field input {
-  background: none;
-  outline: none;
-  border: none;
-  line-height: 1;
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: #333;
-}
-
-.input-field input::placeholder {
-  color: #aaa;
-  font-weight: 500;
-}
 
 .social-text {
   padding: 0.7rem 0;
@@ -261,42 +224,15 @@ form.signin-form {
 
 }
 
-
 .rules-text {
   padding: 0.7rem 0;
   font-size: 1rem;
   font-family: 'Roboto', sans-serif;
 }
 
-.social-media {
-  display: flex;
-  justify-content: center;
-}
-
-.social-icon {
-  height: 46px;
-  width: 46px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 0.45rem;
-  color: #cc1e1e;
-  border-radius: 50%;
-  border: 1px solid  #cc1e1e;
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: 0.3s;
-}
-
-.social-icon:hover {
-  color: #fff;
-  border-color: #cc1e1e;
-  background-color: #e32727 ;
-}
-
 .btn {
   width: 180px;
-  background-color: #e32727;
+  background-color: #792884a7;
   border: none;
   outline: none;
   height: 49px;
@@ -307,13 +243,14 @@ form.signin-form {
   margin: 10px 0;
   cursor: pointer;
   transition: 0.5s;
-    font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 
 }
 
 .btn:hover {
-  background-color: #cc1e1e;
+  background-color: #b21a6ea9;
 }
+
 .panels-container {
   position: absolute;
   height: 100%;
@@ -332,23 +269,23 @@ form.signin-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background: linear-gradient(to right, rgb(39,38,7), #c61983);
+  background: linear-gradient(to bottom right, rgba(16, 14, 36, 0.6), rgba(54, 0, 51, 0.56), rgba(17, 0, 68, 0.537));
+  backdrop-filter: blur(50px); /* desenfoque */
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
 }
 
+.main-image{
+  width: 60%;
+}
+
 .image {
-  width: 80%;
+  width: 90%;
   transition: transform 1.1s ease-in-out;
   transition-delay: 0.4s;
 }
 
-.image-avatar{
-  width:30%;
-  transition: transform 1.1s ease-in-out;
-  transition-delay: 0.4s;
-}
 .panel {
   display: flex;
   flex-direction: column;
@@ -369,6 +306,7 @@ form.signin-form {
 }
 
 .panel .content {
+  margin-top: 10%;
   color: #fff;
   transition: transform 0.9s ease-in-out;
   transition-delay: 0.6s;
@@ -394,32 +332,19 @@ form.signin-form {
   font-weight: 600;
   font-size: 0.8rem;
   font-family: "Poppins", sans-serif;
-
 }
 
 .btn.transparent:hover {
    background-color: #fff;
     border: 2px solid #fff;
-    color:#cc1e1e;
+    color:#cc1e47;
     width: 170px;
     height: 41px;
     font-weight: 600;
     font-size: 0.8rem;
     transition: 00.5s ease-in-out;
-  }
+}
   
-.href{
-  font-family: "Poppins", sans-serif;
-  text-decoration: none;
-  color:rgb(0, 0, 0);
-}
-.href:hover{
-  font-family: "Poppins", sans-serif;
-  text-decoration: none;
-  transition: 00.5s  ease-in-out;
-  color:#cc1e1e;
-}
-
 
 .right-panel .image,
 .right-panel .content {

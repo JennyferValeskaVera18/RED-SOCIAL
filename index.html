@@ -9,9 +9,13 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+  <video id="video-background" autoplay muted loop>
+    <source src="https://download-video.akamaized.net/v3-1/playback/c3cc726b-a242-4e1d-bda7-4533a6d89814/ab519d5d?__token__=st=1710354521~exp=1710368921~acl=%2Fv3-1%2Fplayback%2Fc3cc726b-a242-4e1d-bda7-4533a6d89814%2Fab519d5d%2A~hmac=bdaad4959cc1200f1c14df05110c721a3f2d6d6c17264434c8ef058b3c611d53&r=dXMtd2VzdDE%3D" type="video/mp4">
+    Tu navegador no soporta el tag de video.
+  </video>
   <nav class="navbar navbar-dark navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">FireApp</a>
+      <a class="navbar-brand" href="#">Gaming network</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -29,10 +33,6 @@
   </nav>
 
   <div id="seccion1" class="section container-fluid">
-    <video id="video-background" autoplay muted loop>
-      <source src="https://vod-progressive.akamaized.net/exp=1710325140~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F2435%2F19%2F487176852%2F2183603123.mp4~hmac=c54083470294a120e38a95637fd8b653bd9deb18eb23cfafd521847f985ba293/vimeo-prod-skyfire-std-us/01/2435/19/487176852/2183603123.mp4?filename=file.mp4" type="video/mp4">
-      Tu navegador no soporta el tag de video.
-    </video>
     <div class="container1 mx-auto">
       <div class="content">
         <div class="titulo_marca d-flex align-items-center justify-content-center mt-5">
@@ -41,7 +41,9 @@
         </div>
       </div>
       <div class="triangle"></div>
-      <img src="" class="main-image rounded-4" alt="Main image">
+      <div class="d-flex align-items-center justify-content-center">
+        <img src="https://i.ibb.co/0VQxbTj/Imagenmain.png" class="main-image rounded-4" alt="Main image">
+      </div>
     </div>
   </div>
   
@@ -57,16 +59,19 @@
       <div class="signin-signup">
         <!-- Signin modal -->
         <form action="#"  id="signin-form" class="signin-form">
+          <h4>INICIAR SESIÓN</h4>
           <label for="email-signin" class="mb-1">Email</label>
           <input id="email-signin" type="email" class="form-control mb-3" placeholder="Email" required>
           <label for="password-signin" for="password-signin" class="mb-1">Password</label>
           <input id="password-signin" type="password" class="form-control mb-3" placeholder="******" required>
-          <button type="submit" class="btn btn-primary form-control mb-2">Login</button>
-          <hr />
-          <button id="google-login" class="btn btn-info">Google</button>
+          <div class="d-flex align-items-center">
+            <button type="submit" class="btn btn-primary form-control mb-2">Login</button>
+            <button id="google-login" class="btn btn-info m-2">Google</button>
+          </div>
         </form>
         <!-- Signup modal -->
         <form action="#" id="signup-form" class="signup-form">
+          <h4>REGISTRARSE</h4>
           <label for="email-signup" class="mb-1">Email</label>
             <input id="email-signup" type="email" class="form-control mb-3" placeholder="Email" required>
             <label for="password-signup" class="mb-1">Password</label>
@@ -76,30 +81,23 @@
       </div>
     </div>
     <div class="panels-container">
-      <div class="panel left-panel">
+      <div class="panel left-panel text-center">
         <div class="content">
-          <h3>Hesabınız yoxdur?</h3>
-          <p>
-          Qeydiyyatdan keçdikdən sonra mağazamızın bir çox xidmətlərindən yararlana bilərsiniz..
-          </p>
+          <h1>Aún no tienes cuenta?</h1>
           <button class="btn transparent" id="signup-btn">
-            Qeydiyyatdan keç
+            Registrate 
           </button>
         </div>
-        <img src="img/register.svg" class="image" alt="Register" />
+        <img src="https://i.ibb.co/jfgQ5H4/login.png" class="image" alt="Register" />
       </div>
       <div class="panel right-panel">
         <div class="content">
-          <h3>Hesabınız var?</h3>
-          <p>
-              Mağazamızdakı məhsullardan sifariş vermək üçün daxil olmağınız şərtdir.
-          Daxil olmağa tələsin..
-          </p>
+          <h1>Ya tienes cuenta?</h1>
           <button class="btn transparent" id="signin-btn">
-            Daxil ol
+           Iniciar sesión 
           </button>
         </div>
-        <img src="img/login.svg" class="image" alt="Login" />
+        <img src="https://i.ibb.co/fNzMNM7/register.png" class="image" alt="Login" />
       </div>
     </div>
   </div>

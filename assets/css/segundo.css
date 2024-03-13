@@ -1,7 +1,6 @@
-/* Fuentes */
+@import url('https://fonts.cdnfonts.com/css/typewriter-condensed');
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
-/* Estilos generales */
 body {
   background: linear-gradient(to bottom right, rgb(16, 14, 36), rgb(54, 0, 51), rgb(17, 0, 68));
 }
@@ -13,18 +12,13 @@ body {
   position: fixed;
 }
 
-.nav-link span {
-  cursor: pointer;
-  display: inline-block;
-  padding: 5px 10px;
-  width: 195px;
-  border-radius: 5px;
-  color: #fff;
-  text-decoration: none;
-  margin-left: -7px;
-  transition: background-color 0.3s ease;
+@media (max-width: 576px) {
+  #sidebar {
+    display: none;
+  }
 }
 
+/* Botones */
 .nav-link span:hover {
   background-color: #ffffff34;
 }
@@ -40,65 +34,36 @@ body {
 .nav-link .perfil {
   background-color: #811539a6;
 }
-
-@media (max-width: 767px) {
-  #sidebar {
-    display: none;
-  }
-
-  #main-content {
-    margin-bottom: 56px;
-  }
-
-  .footer-menu {
-    display: block;
-  }
-}
-
 .footer-menu {
+  background-color: #333;
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #f8f9fa;
-  padding: 10px 0;
-  display: none;
-}
-
-@media (max-width: 767px) {
-  .footer-menu {
-    display: block;
-  }
-}
-
-.footer-menu a {
-  color: #007bff;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 14px;
-  text-decoration: none;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  padding: 10px 0;
-}
-
-.footer-menu .nav-item.active {
-  background-color: transparent;
-}
-
-.footer-menu a:hover {
-  box-shadow: 0 0 30px rgb(255, 0, 0);
-  transform: scale(1.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Sombra en la parte superior de la barra */
 }
 
 .navbar {
-  background-color: rgba(149, 149, 149, 0.312);
-  padding: 10px;
-  position: fixed !important;
-  width: 100%;
-  top: 0;
-  transition: background-color 0.5s ease;
-  backdrop-filter: blur(50px);
+  padding: 0; /* Elimina el relleno predeterminado de Bootstrap */
+}
+
+.nav-item {
+  margin: 0 10px; /* Espaciado entre elementos del menú */
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 10px 0;
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Agrega transiciones suaves */
+}
+
+i:hover {
+  box-shadow: 0 0 30px rgb(255, 0, 0); /* Aumenta el tamaño de la sombra al hacer hover */
+  transform: scale(1.5); /* Aumenta el tamaño del icono al hacer hover */
 }
 
 .btn-publicar {
@@ -118,7 +83,7 @@ body {
   border: 0.5px solid #060606;
   overflow: hidden;
   cursor: pointer;
-  margin-top: 18%;
+  margin-top: 14%;
 }
 
 .btn-publicar:hover {
@@ -150,5 +115,10 @@ i {
 }
 
 .card {
-  background-color: rgba(139, 77, 136, 0.373);
+  background-color: rgba(139, 77, 136, 0.645);
+  font-family: 'Typewriter_Condensed_Demi', sans-serif;
+}
+
+h6 {
+  font-family: 'Pixelify Sans', sans-serif;
 }
