@@ -55,7 +55,7 @@ Luego, desarrollamos un prototipo de alta fidelidad utilizando Figma, basado en 
 - Se muestra un mensaje de advertencia si intentan publicar contenido vacío.
 - Existe la opción de eliminar publicaciones, con un mensaje de confirmación para evitar eliminaciones accidentales.
 
-### HU 04: Exploración y Búsqueda de Videojuegos
+### HU 04: Eliminación de posts
 
 **Como** usuario interesado en videojuegos,  
 **Quiero** poder una advertensia antes de eliminar definitivamente mi publiación  
