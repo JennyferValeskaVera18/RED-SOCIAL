@@ -9,11 +9,8 @@ import {
     getDoc,
     updateDoc,
     deleteDoc,
-    onSnapshot
-} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+    onSnapshot,
+  } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js"; 
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -33,7 +30,8 @@ export const auth = getAuth(app);
 export const db = getFirestore();
 
 // Funciones del CRUD
-export const createTask = (title, description, userName, date, time) => addDoc(collection(db, "tasks"), {title, description, userName, date, time});
+//Para añadir un documento a la colección "tasks".
+export const createTask = (title, description, userName, photoURL, userEmail, date, time) => addDoc(collection(db, "tasks"), {title, description, userName, photoURL, userEmail, date, time});
 
 export const getTask = id => getDoc(doc(db, "tasks", id));
 
