@@ -66,8 +66,13 @@ export default function setUpTasks(user) {
         /*Cuando se hace clic en uno de estos botones, se ejecutará una función.
          La función recibe un parámetro, {target: { dataset }}, que representa el elemento HTML 
          en el que se hizo clic y permite acceder a los atributos data- del elemento. */
-        btnsDelete.forEach(btn => {
-            btn.addEventListener("click", ({target: { dataset }}) => deleteTask(dataset.id));
+         btnsDelete.forEach(btn => {
+            btn.addEventListener("click", ({ target: { dataset } }) => {
+                const confirmDelete = confirm("¿Está seguro de eliminar su publicación?");
+                if (confirmDelete) {
+                    deleteTask(dataset.id);
+                }
+            });
         });
        
         // UPDATE
@@ -126,6 +131,12 @@ taskForm.addEventListener("submit", (e) => {
     // Obtención del título y la descripción de la tarea del formulario.
     const title = taskForm["task-title"].value;
     const description = taskForm["task-content"].value;
+
+    // Validación de la descripción
+    if (description.trim() === "") {
+        alert("Por favor, ingrese contenido en la publicación.");
+        return; // Detener la ejecución si la descripción está vacía
+    }
     
     // Si no se está editando, se crea una nueva tarea; de lo contrario, se actualiza la tarea existente.
     if (!editStatus) {

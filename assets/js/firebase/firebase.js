@@ -12,7 +12,7 @@ import {
     getDoc,
     updateDoc,
     deleteDoc,
-    onSnapshot
+    onSnapshot,
   } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js"; 
 
 // Your web app's Firebase configuration
@@ -44,41 +44,3 @@ export const updateTask = (id,newFields ) => updateDoc(doc(db, "tasks" , id), ne
 export const onGetTask = (callback) => onSnapshot(collection(db, "tasks"), callback);
 
 export const deleteTask = id => deleteDoc(doc(db, "tasks", id));
-  //Lo exporto como Una constante que ya se puede utilizar para autenticar usuarios 
-  //export const increment = increment;
- 
-
-
- /*
- //Conexion a la base de datos coleection,AUTENTICAR la base de datos Firestore respectivamente.
- export const db = getFirestore(app);
- 
- // Funciones del CRUD
- //Para añadir un documento a la colección "tasks".
- export const createTask = (title, description, userName, date, time) => addDoc(collection(db, "tasks"), {title, description, userName, date, time});
- 
- export const getTask = id => getDoc(doc(db, "tasks", id));
- 
- export const updateTask = (id,newFields ) => updateDoc(doc(db, "tasks" , id), newFields);
- 
- export const onGetTask = (callback) => onSnapshot(collection(db, "tasks"), callback);
- 
- export const deleteTask = id => deleteDoc(doc(db, "tasks", id));
-  //Lo exporto como Una constante que ya se puede utilizar para autenticar usuarios 
-*/
-
-/*
-// Importa la instancia de Firebase y el método de actualización de documentos
-import { db } from "./firebaseConfig.js";
-
-// Función para dar "like" a una tarea
-export function likeTask(taskId) {
-    // Obtén una referencia al documento de la tarea en la base de datos
-    const taskRef = db.collection("tasks").doc(taskId);
-
-    // Incrementa el contador de likes utilizando el método de actualización de documentos de Firebase
-    return taskRef.update({
-        likes: firebase.firestore.FieldValue.increment(1)
-    });
-}
-*/

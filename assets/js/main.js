@@ -18,14 +18,5 @@ onAuthStateChanged (auth, async(user) =>{
     else {
         loginCheck(user);
     }
-    /*if (user) {
-        loginCheck(user);
-        import("./firebase/funciones.js") 
-        .then(({default: setUpTasks}) => setUpTasks(user));
-    }
-    // Si ha salido
-    else {
-        loginCheck(user);
-    }
-*/
+    
 } )
