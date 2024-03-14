@@ -9,10 +9,8 @@ Nuestra plataforma, "GamesApp" , ofrece a los usuarios la posibilidad de compart
 ## Proceso de Diseño
 Iniciamos el diseño de nuestra plataforma con bocetos a mano para definir la estructura y el flujo de navegación.
 
-### Bocetos
-- [Boceto 01](./assets/img/1er-boceto.png)
-- [Boceto 02](./assets/img/2do-boceto.png)
-- [Boceto 03](./assets/img/3er-boceto.png)
+### Boceto
+- [Boceto 01](./assets/img/boceto.jpeg)
 
 Luego, desarrollamos un prototipo de alta fidelidad utilizando Figma, basado en nuestros bocetos para lograr una representación más realista de la interfaz.
 
